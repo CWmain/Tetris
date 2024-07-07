@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bly0x2dbkv7be"]
+
+[ext_resource type="Script" path="res://Scripts/game_scence.gd" id="1_era1y"]
+[ext_resource type="PackedScene" uid="uid://dgvyj5jkhnmu3" path="res://Objects/base_block.tscn" id="1_rgnqx"]
+[ext_resource type="PackedScene" uid="uid://bomc6dumuu2rb" path="res://Objects/l_block.tscn" id="2_fv4ir"]
+
+[node name="GameScence" type="Node2D"]
+script = ExtResource("1_era1y")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(102, 133)
+rotation = 0.0813633
+
+[node name="BaseBlock" parent="." instance=ExtResource("1_rgnqx")]
+position = Vector2(102, 133)
+
+[node name="L-Block" parent="." instance=ExtResource("2_fv4ir")]

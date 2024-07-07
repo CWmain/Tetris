@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgvyj5jkhnmu3"]
+
+[ext_resource type="Script" path="res://Scripts/base_block.gd" id="1_sys4p"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_bt8ei"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2jiq"]
+size = Vector2(1, 1)
+
+[node name="BaseBlock" type="Node2D"]
+script = ExtResource("1_sys4p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16, -16)
+scale = Vector2(32, 32)
+texture = SubResource("CanvasTexture_bt8ei")
+
+[node name="Area2D" type="Area2D" parent="."]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(16, -16)
+scale = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_h2jiq")

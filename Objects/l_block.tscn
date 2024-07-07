@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bomc6dumuu2rb"]
+
+[ext_resource type="PackedScene" uid="uid://dgvyj5jkhnmu3" path="res://Objects/base_block.tscn" id="1_5b2o8"]
+[ext_resource type="Script" path="res://Scripts/full_block.gd" id="1_nvafj"]
+
+[node name="L-Block" type="Node2D"]
+script = ExtResource("1_nvafj")
+
+[node name="BaseBlock" parent="." instance=ExtResource("1_5b2o8")]
+position = Vector2(-32, 32)
+
+[node name="BaseBlock2" parent="." instance=ExtResource("1_5b2o8")]
+position = Vector2(0, 32)
+
+[node name="BaseBlock3" parent="." instance=ExtResource("1_5b2o8")]
+position = Vector2(-32, 0)
+
+[node name="BaseBlock4" parent="." instance=ExtResource("1_5b2o8")]
+position = Vector2(-32, -32)
