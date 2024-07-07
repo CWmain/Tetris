@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/full_block.gd" id="1_wivod"]
 [ext_resource type="PackedScene" uid="uid://dgvyj5jkhnmu3" path="res://Objects/base_block.tscn" id="2_bhd22"]
 
-[node name="L-Block" type="Node2D"]
+[node name="Reverse-L-Block" type="Node2D"]
 script = ExtResource("1_wivod")
 color = Color(0.817496, 0.172576, 0.623095, 1)
 

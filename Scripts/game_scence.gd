@@ -4,6 +4,8 @@ signal moveBlocks
 signal shiftBlocks
 signal rotateLeft
 signal rotateRight
+signal moveLeft
+signal moveRight
 
 func _process(delta):
 	if Input.is_action_just_pressed("speedUp"):
