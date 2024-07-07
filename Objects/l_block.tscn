@@ -5,6 +5,7 @@
 
 [node name="L-Block" type="Node2D"]
 script = ExtResource("1_nvafj")
+color = Color(1, 0.941176, 0, 1)
 
 [node name="BaseBlock" parent="." instance=ExtResource("1_5b2o8")]
 position = Vector2(-32, 32)

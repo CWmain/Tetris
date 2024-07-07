@@ -5,7 +5,8 @@ extends Node2D
 var locked: bool = false
 
 func _ready():
-	self.get_tree().get_root().get_child(0).moveBlocks.connect(_on_moveBlocks)
+	self.get_tree().get_root().get_child(0).shiftBlocks.connect(_on_shiftBlocks)
+	pass
 	
 
 func move():
@@ -17,5 +18,5 @@ func move():
 func clear():
 	self.queue_free()
 
-func _on_moveBlocks():
+func _on_shiftBlocks():
 	move()

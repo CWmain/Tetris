@@ -1,6 +1,7 @@
 extends Node2D
 
 signal moveBlocks
+signal shiftBlocks
 signal rotateLeft
 signal rotateRight
 
