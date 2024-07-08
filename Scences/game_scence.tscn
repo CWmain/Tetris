@@ -1,33 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://bly0x2dbkv7be"]
+[gd_scene load_steps=5 format=3 uid="uid://bly0x2dbkv7be"]
 
 [ext_resource type="Script" path="res://Scripts/game_scence.gd" id="1_era1y"]
 [ext_resource type="PackedScene" uid="uid://dgvyj5jkhnmu3" path="res://Objects/base_block.tscn" id="1_rgnqx"]
 [ext_resource type="PackedScene" uid="uid://bomc6dumuu2rb" path="res://Objects/l_block.tscn" id="2_fv4ir"]
-[ext_resource type="PackedScene" uid="uid://fsxfmjpmavpx" path="res://Objects/reverse_l_block.tscn" id="4_1e6nb"]
-[ext_resource type="PackedScene" uid="uid://bicgl2r3cv2ss" path="res://Objects/line_block.tscn" id="5_g4b5y"]
-[ext_resource type="PackedScene" uid="uid://d26k5lq5r4xue" path="res://Objects/s_block.tscn" id="6_qs2gm"]
-[ext_resource type="PackedScene" uid="uid://hqv8rqwns53x" path="res://Objects/z_block.tscn" id="7_kqamq"]
+[ext_resource type="PackedScene" uid="uid://cdl5pafo5ead" path="res://Objects/play_board.tscn" id="2_hk27c"]
 
 [node name="GameScence" type="Node2D"]
 script = ExtResource("1_era1y")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(102, 133)
-rotation = 0.0813633
+zoom = Vector2(0.5, 0.5)
+
+[node name="PlayBoard" parent="." instance=ExtResource("2_hk27c")]
 
 [node name="BaseBlock" parent="." instance=ExtResource("1_rgnqx")]
-position = Vector2(102, 133)
+position = Vector2(-128, -320)
 
 [node name="L-Block" parent="." instance=ExtResource("2_fv4ir")]
-
-[node name="L-Block2" parent="." instance=ExtResource("4_1e6nb")]
-position = Vector2(178, 2)
-
-[node name="Line-Block" parent="." instance=ExtResource("5_g4b5y")]
-position = Vector2(-182, -9)
-
-[node name="S-Block" parent="." instance=ExtResource("6_qs2gm")]
-position = Vector2(-375, 30)
-
-[node name="Z-Block" parent="." instance=ExtResource("7_kqamq")]
-position = Vector2(-259, 68)
+position = Vector2(-128, -416)

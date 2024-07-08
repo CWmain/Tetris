@@ -9,12 +9,19 @@ color = Color(1, 0.439216, 0, 1)
 
 [node name="BaseBlock" parent="." instance=ExtResource("1_5b2o8")]
 position = Vector2(-32, 32)
+up = false
+right = false
 
 [node name="BaseBlock2" parent="." instance=ExtResource("1_5b2o8")]
 position = Vector2(0, 32)
+up = false
+left = false
 
 [node name="BaseBlock3" parent="." instance=ExtResource("1_5b2o8")]
 position = Vector2(-32, 0)
+up = false
+down = false
 
 [node name="BaseBlock4" parent="." instance=ExtResource("1_5b2o8")]
 position = Vector2(-32, -32)
+down = false

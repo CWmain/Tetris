@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdl5pafo5ead"]
+
+[ext_resource type="Script" path="res://Scripts/play_board.gd" id="1_7ggcl"]
+[ext_resource type="Texture2D" uid="uid://btxjou5r52fiy" path="res://Sprites/TetrisGrid.png" id="1_bb6j6"]
+
+[node name="PlayBoard" type="Node2D"]
+script = ExtResource("1_7ggcl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bb6j6")

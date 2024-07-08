@@ -7,6 +7,7 @@ signal rotateRight
 signal moveLeft
 signal moveRight
 
+
 func _process(delta):
 	if Input.is_action_just_pressed("speedUp"):
 		moveBlocks.emit()
@@ -15,3 +16,5 @@ func _process(delta):
 	if Input.is_action_just_pressed("rotateRight"):
 		rotateRight.emit()
 	pass
+
+
