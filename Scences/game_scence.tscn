@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bly0x2dbkv7be"]
 
 [ext_resource type="Script" path="res://Scripts/game_scence.gd" id="1_era1y"]
-[ext_resource type="PackedScene" uid="uid://dgvyj5jkhnmu3" path="res://Objects/base_block.tscn" id="1_rgnqx"]
 [ext_resource type="PackedScene" uid="uid://bomc6dumuu2rb" path="res://Objects/l_block.tscn" id="2_fv4ir"]
 [ext_resource type="PackedScene" uid="uid://cdl5pafo5ead" path="res://Objects/play_board.tscn" id="2_hk27c"]
+[ext_resource type="PackedScene" uid="uid://325b8qj3ouxa" path="res://Objects/placed_block.tscn" id="4_fgy4k"]
 
 [node name="GameScence" type="Node2D"]
 script = ExtResource("1_era1y")
@@ -13,8 +13,11 @@ zoom = Vector2(0.5, 0.5)
 
 [node name="PlayBoard" parent="." instance=ExtResource("2_hk27c")]
 
-[node name="BaseBlock" parent="." instance=ExtResource("1_rgnqx")]
-position = Vector2(-128, -320)
-
 [node name="L-Block" parent="." instance=ExtResource("2_fv4ir")]
 position = Vector2(-128, -416)
+
+[node name="PlacedBlock" parent="." instance=ExtResource("4_fgy4k")]
+position = Vector2(-128, -288)
+
+[node name="PlacedBlock2" parent="." instance=ExtResource("4_fgy4k")]
+position = Vector2(-64, -192)

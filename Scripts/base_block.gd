@@ -15,8 +15,15 @@ var locked: bool = false
 @export var left :bool = true
 @export var right :bool = true
 
+signal blockedRight(value: bool)
+signal blockedLeft(value: bool)
+signal blockedUp(value: bool)
+signal blockedDown(value: bool)
+
+var process: bool = false
+var wait = 0
 func _ready():
-	self.get_tree().get_root().get_child(0).shiftBlocks.connect(_on_shiftBlocks)
+	self.get_parent().processBlocks.connect(_on_process)
 	
 	# Enable / Disable raycasts
 	Dup.enabled = up
@@ -27,11 +34,23 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-
+	if !process:
+		return
 	if Ddown.is_colliding():
-
-		print("Under")
-		print(Ddown.get_collider())
+		blockedDown.emit(true)
+		
+	if Dup.is_colliding():
+		blockedUp.emit(true)
+		
+	if Dleft.is_colliding():
+		blockedLeft.emit(true)
+		
+	if Dright.is_colliding():
+		blockedRight.emit(true)
+	wait += delta
+	if wait > 0.5:
+		process = false
+		wait = 0
 	pass
 
 func move():
@@ -43,6 +62,6 @@ func move():
 func clear():
 	self.queue_free()
 
-func _on_shiftBlocks():
-	move()
+func _on_process():
+	process = true
 
