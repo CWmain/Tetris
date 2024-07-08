@@ -4,29 +4,20 @@ extends Node2D
 var locked: bool = false
 @onready var sprite_2d = $Sprite2D
 
-@onready var Dup = $Detections/Up
 @onready var Ddown = $Detections/Down
 @onready var Dleft = $Detections/Left
 @onready var Dright = $Detections/Right
 
 @export_subgroup("Detection")
-@export var up :bool = true
 @export var down :bool = true
 @export var left :bool = true
 @export var right :bool = true
 
-signal blockedRight(value: bool)
-signal blockedLeft(value: bool)
-signal blockedUp(value: bool)
-signal blockedDown(value: bool)
-
 var process: bool = false
-var wait = 0
+
 func _ready():
-	self.get_parent().processBlocks.connect(_on_process)
 	
 	# Enable / Disable raycasts
-	Dup.enabled = up
 	Ddown.enabled = down
 	Dleft.enabled = left
 	Dright.enabled = right
@@ -34,22 +25,7 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-	if !process:
-		return
-	if Ddown.is_colliding():
-		blockedDown.emit(true)
-		
-	if Dup.is_colliding():
-		print(self.name)
-		blockedUp.emit(true)
-		
-	if Dleft.is_colliding():
-		blockedLeft.emit(true)
-		
-	if Dright.is_colliding():
-		blockedRight.emit(true)
 
-	process = false
 	pass
 
 func move():
@@ -61,6 +37,4 @@ func move():
 func clear():
 	self.queue_free()
 
-func _on_process():
-	process = true
 

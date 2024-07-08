@@ -7,7 +7,7 @@ var blockedRight: bool = false
 
 #Signal to the blocks to detect collisions
 signal processBlocks
-
+var processComplete = false
 func _ready():
 	for c in self.get_children():
 		c.sprite_2d.modulate = color
@@ -15,23 +15,19 @@ func _ready():
 		c.blockedLeft.connect(_on_blockedLeft)
 		c.blockedRight.connect(_on_blockedRight)
 		c.blockedUp.connect(_on_blockedUp)
+		#c.completeProcess.connect(_on_completeProcess)
 
 func _physics_process(delta):
-	
+	processBlocks.emit()
 	if Input.is_action_just_pressed("left"):
-		processBlocks.emit()
 		_on_moveLeft();
 	if Input.is_action_just_pressed("right"):
-		processBlocks.emit()
 		_on_moveRight();
 	if Input.is_action_just_pressed("speedUp"):
-		processBlocks.emit()
 		_on_moveBlocks()
 	if Input.is_action_just_pressed("rotateLeft"):
-		processBlocks.emit()
 		_on_rotateLeft()
 	if Input.is_action_just_pressed("rotateRight"):
-		processBlocks.emit()
 		_on_rotateRight()
 	pass
 
@@ -74,6 +70,11 @@ func _on_blockedUp(value):
 	
 
 func _on_moveBlocks():
+	blockedDown = false
+	processBlocks.emit()
+	await Signal(self.processBlocks)
+	processComplete = false
+	
 	if (blockedDown):
 		print("Can't move")
 		return
@@ -100,3 +101,4 @@ func _on_moveRight():
 	self.position.x += 32
 	print("Unblock Down")
 	blockedDown = false
+
