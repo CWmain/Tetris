@@ -54,9 +54,9 @@ func _on_blockedRight(value):
 	print("RIGHT emit %s" % value)
 	if (snapped(rotation, 1) == snapped(PI,1)):
 		blockedLeft = value
-	if (rotation == 0):
+	if (snapped(rotation, 1) == 0):
 		blockedRight = value
-	if (rotation == PI/2):
+	if (snapped(rotation, 1) == snapped(PI/2,1)):
 		blockedDown = value
 	
 func _on_blockedUp(value):
@@ -69,18 +69,6 @@ func _on_blockedUp(value):
 		blockedLeft = value
 	
 
-func _on_moveBlocks():
-	blockedDown = false
-	processBlocks.emit()
-	await Signal(self.processBlocks)
-	processComplete = false
-	
-	if (blockedDown):
-		print("Can't move")
-		return
-
-	self.position.y += 32
-
 func _on_rotateRight():
 	self.rotation += PI/2
 	if self.rotation == 2*PI:
@@ -92,13 +80,45 @@ func _on_rotateLeft():
 	if self.rotation < 0:
 		self.rotation += 2*PI
 
-func _on_moveLeft():
-	self.position.x -= 32
-	print("Unblock Down")
+func _on_moveBlocks():
 	blockedDown = false
+	processBlocks.emit()
+	await Signal(self.processBlocks)
+	processComplete = false
+	
+	if (blockedDown):
+		print("Can't move")
+		return
+	blockedLeft = false
+	blockedRight = false
+	self.position.y += 32
+
+
+func _on_moveLeft():
+	blockedLeft = false
+	processBlocks.emit()
+	await Signal(self.processBlocks)
+	processComplete = false
+	
+	if (blockedLeft):
+		print("Can't move")
+		return
+	self.position.x -= 32
+
+	blockedDown = false
+	blockedRight = false
 	
 func _on_moveRight():
+	blockedRight = false
+	processBlocks.emit()
+	await Signal(self.processBlocks)
+	processComplete = false
+	
+	if (blockedRight):
+		print("Can't move")
+		return
 	self.position.x += 32
-	print("Unblock Down")
+
 	blockedDown = false
+	blockedLeft = false
 
