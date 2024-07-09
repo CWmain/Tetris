@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://bly0x2dbkv7be"]
+[gd_scene load_steps=7 format=3 uid="uid://bly0x2dbkv7be"]
 
 [ext_resource type="Script" path="res://Scripts/game_scence.gd" id="1_era1y"]
-[ext_resource type="PackedScene" uid="uid://bomc6dumuu2rb" path="res://Objects/l_block.tscn" id="2_fv4ir"]
 [ext_resource type="PackedScene" uid="uid://cdl5pafo5ead" path="res://Objects/play_board.tscn" id="2_hk27c"]
 [ext_resource type="PackedScene" uid="uid://325b8qj3ouxa" path="res://Objects/placed_block.tscn" id="4_fgy4k"]
+[ext_resource type="PackedScene" uid="uid://d26k5lq5r4xue" path="res://Objects/s_block.tscn" id="5_frosb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7wmyj"]
+size = Vector2(320, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4s5fm"]
+size = Vector2(20, 960)
 
 [node name="GameScence" type="Node2D"]
 script = ExtResource("1_era1y")
@@ -19,5 +25,27 @@ position = Vector2(-128, -288)
 [node name="PlacedBlock2" parent="." instance=ExtResource("4_fgy4k")]
 position = Vector2(-64, -192)
 
-[node name="L-Block" parent="." instance=ExtResource("2_fv4ir")]
-position = Vector2(-128, -416)
+[node name="S-Block" parent="." instance=ExtResource("5_frosb")]
+position = Vector2(0, -416)
+
+[node name="Boundary" type="Node2D" parent="."]
+
+[node name="Floor" type="Area2D" parent="Boundary"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/Floor"]
+position = Vector2(0, 491)
+shape = SubResource("RectangleShape2D_7wmyj")
+
+[node name="LeftWall" type="Area2D" parent="Boundary"]
+position = Vector2(-170, -491)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/LeftWall"]
+position = Vector2(0, 491)
+shape = SubResource("RectangleShape2D_4s5fm")
+
+[node name="RightWall" type="Area2D" parent="Boundary"]
+position = Vector2(170, -491)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/RightWall"]
+position = Vector2(0, 491)
+shape = SubResource("RectangleShape2D_4s5fm")
